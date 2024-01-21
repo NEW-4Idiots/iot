@@ -1,0 +1,59 @@
+패키지 업데이트 
+sudo apt update
+sudo apt upgrade
+
+라즈베리파이 카메라 기능 활성화
+sudo raspi-config
+
+패키지 설치
+sudo apt install autoconf automake build-essential pkgconf libtool 
+git libzip-dev libjpeg-dev gettext libmicrohttpd-dev libavformat-dev
+libavcodec-dev libavutil-dev libswscale-dev libavdevice-dev 
+default-libmysqlclient-dev libpq-dev libsqlite3-dev libwebp-dev
+
+
+sudo wget https://github.com/Motion-Project/motion/releases/download/release-4.4.0/$(lsb_release -cs)_motion_4.4.0-1_armhf.deb
+sudo dpkg -i $(lsb_release -cs)_motion_4.4.0-1_armhf.deb
+
+sudo apt install motion:armhf
+sudo apt --fix-broken install
+
+
+motion 설치
+
+sudo apt-get inatll motion
+
+설정값 변경
+sudo nano /etc/motion/motion.conf
+
+daemon off
+stream_localhost off
+output_pictures off
+picture_output off
+ffmpeg_output_movies off
+movie_output off	
+framerate 100
+height 480
+stream_maxrate 100
+stream_quality   100
+quality 100
+post_capture     5
+
+
+스트리밍 영상 저장을 위한 설정
+output_pictures on    
+ffmpeg_output)movies on
+stream_motion on 
+stream_maxrate 100
+
+
+
+
+실행하기 
+sudo systemctl enable motion
+sudo systemctl start motion
+
+
+접속하기 
+ifconfig 아이피본다음
+아이피:포트 로 접속
